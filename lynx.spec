@@ -1,7 +1,7 @@
 %define version 2.8.6
 %define versio_ 2-8-6
 #%define subver pre.4
-%define rel	1
+%define rel	2
 %define	release	%mkrel %{rel}
 
 Summary:	Text based browser for the world wide web
@@ -18,6 +18,8 @@ Source0:	http://lynx.isc.org/current/%name%{version}.tar.bz2
 Patch0:		lynx2-8-5-adapt-to-modern-file-localizations.patch
 Patch1:		lynx2-8-6-default-config.patch
 Patch2:		lynx2-8-6-fix-ugly-color.patch
+# fix segfault with -crawl -width -dump options (#29785)
+Patch3:		lynx2-8-6-typo-fix-from-upstream.patch
 Patch10:	lynx2-8-6-tmp_dir.patch
 Patch11:	lynx2-8-6-don-t-accept-command-line-args-to-telnet.patch
 Provides:	webclient lynx-ssl
@@ -42,6 +44,7 @@ countries, it may even be illegal to use it.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %patch10 -p1
 %patch11 -p1
 perl -pi -e 's,^#LOCALE_CHARSET:.*,LOCALE_CHARSET:TRUE,' lynx.cfg
