@@ -23,7 +23,6 @@ Patch3:		lynx2-8-6-typo-fix-from-upstream.patch
 Patch10:	lynx2-8-6-tmp_dir.patch
 Patch11:	lynx2-8-6-don-t-accept-command-line-args-to-telnet.patch
 Provides:	webclient lynx-ssl
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel libncursesw-devel
 Obsoletes:	lynx-ssl
