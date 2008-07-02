@@ -1,6 +1,6 @@
 %define version 2.8.6
 %define versio_ 2-8-6
-#%define subver pre.4
+#define subver pre.4
 %define rel	2
 %define	release	%mkrel %{rel}
 
