@@ -1,7 +1,7 @@
 %define version 2.8.6
 %define versio_ 2-8-6
 #define subver pre.4
-%define rel	3
+%define rel	4
 %define	release	%mkrel %{rel}
 
 Summary:	Text based browser for the world wide web
@@ -23,6 +23,7 @@ Patch3:		lynx2-8-6-typo-fix-from-upstream.patch
 Patch10:	lynx2-8-6-tmp_dir.patch
 Patch11:	lynx2-8-6-don-t-accept-command-line-args-to-telnet.patch
 Patch12:	lynx-rh-CVE-2008-4690.patch
+Patch13:	lynx2-8-6-format_not_a_string_literal_and_no_format_arguments.diff
 Provides:	webclient lynx-ssl
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	openssl-devel
@@ -49,6 +50,7 @@ countries, it may even be illegal to use it.
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1 -b .cve-2008-4690
+%patch13 -p0 -b .format_not_a_string_literal_and_no_format_arguments
 perl -pi -e 's,^#LOCALE_CHARSET:.*,LOCALE_CHARSET:TRUE,' lynx.cfg
 
 %build
