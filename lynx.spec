@@ -93,18 +93,18 @@ OTHER`
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std install-help
 
-install -d $RPM_BUILD_ROOT%{_sysconfdir}
-cat >$RPM_BUILD_ROOT%{_sysconfdir}/lynx-site.cfg <<EOF
+install -d %{buildroot}%{_sysconfdir}
+cat >%{buildroot}%{_sysconfdir}/lynx-site.cfg <<EOF
 # Place any local lynx configuration options (proxies etc.) here.
 EOF
 
 %find_lang lynx
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %triggerpostun -- lynx < 2.8.5-0.13mdk.dev.12
 # handle lynx.cfg move from /etc to /usr/share/lynx
