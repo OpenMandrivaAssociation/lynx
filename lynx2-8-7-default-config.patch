@@ -1,0 +1,76 @@
+--- lynx2-8-7/lynx.cfg.orig	2010-01-03 14:47:10.000000000 +0100
++++ lynx2-8-7/lynx.cfg	2010-01-03 14:53:22.000000000 +0100
+@@ -1,7 +1,8 @@
+ # $LynxId: lynx.cfg,v 1.180 2009/06/07 17:02:21 tom Exp $
+ # lynx.cfg file.
+-# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
+-#                                     or Lynx_Dir:lynx.cfg (VMS)
++#
++# Please don't edit this file directly (it is updated with every Mandriva
++# Linux update, overwriting your changes). Instead, edit /etc/lynx-site.cfg.
+ #
+ # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
+ #PRCS LYNX_VERSION "2.8.7rel.1"
+@@ -93,7 +94,7 @@
+ #
+ # Normally we expect you will connect to a remote site, e.g., the Lynx starting
+ # site:
+-STARTFILE:http://lynx.isc.org/
++STARTFILE:http://www.mandrivalinux.com
+ #
+ # As an alternative, you may want to use a local URL.  A good choice for this is
+ # the user's home directory:
+@@ -118,9 +119,9 @@
+ # This definition will be overridden if the "LYNX_HELPFILE" environment
+ # variable has been set.
+ #
+-HELPFILE:http://lynx.isc.org/release/lynx2-8-6/lynx_help/lynx_help_main.html
++#HELPFILE:http://lynx.isc.org/release/lynx2-8-6/lynx_help/lynx_help_main.html
+ .ex
+-#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
++HELPFILE:file://localhost//usr/share/lynx_help/lynx_help_main.html
+ 
+ 
+ .h2 DEFAULT_INDEX_FILE
+@@ -553,7 +554,7 @@
+ # Older browser versions will fail so keep NCR_IN_BOOKMARKS:FALSE if you
+ # plan to use them.
+ #
+-#NCR_IN_BOOKMARKS:FALSE
++NCR_IN_BOOKMARKS:TRUE
+ 
+ 
+ .h2 FORCE_8BIT_TOUPPER
+@@ -2314,7 +2315,7 @@
+ # Make this empty (but not commented out) if you don't have such a viewer or
+ # want to disable the built-in default viewer mappings for image types.
+ #
+-#XLOADIMAGE_COMMAND:xv %s
++XLOADIMAGE_COMMAND:xli %s
+ 
+ # Unix:
+ # =====
+@@ -2381,11 +2382,11 @@
+ #
+ .ex 7
+ #VIEWER:application/postscript:ghostview %s&:XWINDOWS
+-#VIEWER:image/gif:xli %s&:XWINDOWS
+-#VIEWER:image/x-xbm:xli %s&:XWINDOWS
+-#VIEWER:image/png:xli %s&:XWINDOWS
+-#VIEWER:image/tiff:xli %s&:XWINDOWS
+-#VIEWER:image/jpeg:xli %s&:XWINDOWS
++VIEWER:image/gif:xli %s&:XWINDOWS
++VIEWER:image/x-xbm:xli %s&:XWINDOWS
++VIEWER:image/png:xli %s&:XWINDOWS
++VIEWER:image/tiff:xli %s&:XWINDOWS
++VIEWER:image/jpeg:xli %s&:XWINDOWS
+ #VIEWER:video/mpeg:mpeg_play %s &:XWINDOWS
+ 
+ 
+@@ -3587,3 +3588,6 @@
+ #
+ # The default size (if not overridden in userdefs.h) is 40.
+ #STATUS_BUFFER_SIZE:40
++
++# included last to allow overriding configuration above
++INCLUDE:/etc/lynx-site.cfg
