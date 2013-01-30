@@ -1,13 +1,10 @@
-%define version 2.8.7
-%define versio_ 2-8-7
+%define versio_ %(echo %version |sed -e 's,\\\.,-,g')
 #define subver pre.4
-%define rel	6
-%define	release	%mkrel %{rel}
 
 Summary:	Text based browser for the world wide web
 Name:		lynx
-Version:	%{version}
-Release:	%{release}
+Version:	2.8.7
+Release:	7
 License:	GPL
 URL:		http://lynx.isc.org
 Group:		Networking/WWW
@@ -22,11 +19,10 @@ Patch10:	lynx2-8-7-tmp_dir.patch
 Patch11:	lynx2-8-6-don-t-accept-command-line-args-to-telnet.patch
 Patch13:	lynx2-8-6-format_not_a_string_literal_and_no_format_arguments.diff
 Provides:	webclient lynx-ssl
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel 
 BuildRequires:  pkgconfig(ncursesw)
-Obsoletes:	lynx-ssl
+Obsoletes:	lynx-ssl < %EVRD
 
 %description
 This a terminal based WWW browser. While it does not make any attempt
@@ -90,6 +86,7 @@ OTHER`
 # --enable-kbd-layout not useful enough
 # --enable-cjk not needed for CJK and may go away in a future release
 
+CFLAGS="$RPM_OPT_FLAGS -I/usr/include/openssl" \
 %configure --libdir=/usr/share/lynx $debian_options $redhat_options $other_options
 %make
 
