@@ -1,13 +1,12 @@
 %define versio_ %(echo %{version} |sed -e 's,\\\.,-,g')
-#define subver pre.4
 
 Summary:	Text based browser for the world wide web
 Name:		lynx
 Version:	2.8.7
 Release:	8
 License:	GPLv2
-Url:		http://lynx.isc.org
 Group:		Networking/WWW
+Url:		http://lynx.isc.org
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
 Patch0:		lynx2-8-7-adapt-to-modern-file-localizations.patch
 Patch1:		lynx2-8-7-default-config.patch
