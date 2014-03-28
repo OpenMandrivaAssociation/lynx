@@ -3,7 +3,7 @@
 Summary:	Text based browser for the world wide web
 Name:		lynx
 Version:	2.8.7
-Release:	9
+Release:	10
 License:	GPLv2
 Group:		Networking/WWW
 Url:		http://lynx.isc.org
