@@ -1,9 +1,9 @@
-%define versio_ %(echo %{version} |sed -e 's,\\\.,-,g')
+%define versio_ %(echo %{version} |sed -e 's,\\\(dev\\\|pre\\\|rel\\\).*,,;s,\\\.,-,g')
 
 Summary:	Text based browser for the world wide web
 Name:		lynx
-Version:	2.8.7
-Release:	16
+Version:	2.8.9dev.4
+Release:	1
 License:	GPLv2
 Group:		Networking/WWW
 Url:		http://lynx.isc.org
@@ -13,7 +13,6 @@ Patch1:		lynx2-8-7-default-config.patch
 Patch2:		lynx2-8-6-fix-ugly-color.patch
 Patch10:	lynx2-8-7-tmp_dir.patch
 Patch11:	lynx2-8-6-don-t-accept-command-line-args-to-telnet.patch
-Patch13:	lynx2-8-6-format_not_a_string_literal_and_no_format_arguments.diff
 BuildRequires:	gettext
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(ncursesw)

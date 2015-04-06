@@ -1,17 +1,17 @@
---- lynx2-8-7/lynx.cfg.orig	2010-01-03 14:47:10.000000000 +0100
-+++ lynx2-8-7/lynx.cfg	2010-01-03 14:53:22.000000000 +0100
+--- lynx2-8-9/lynx.cfg.0001~	2015-04-06 17:48:56.613183364 +0200
++++ lynx2-8-9/lynx.cfg	2015-04-06 18:01:15.703156083 +0200
 @@ -1,7 +1,8 @@
- # $LynxId: lynx.cfg,v 1.180 2009/06/07 17:02:21 tom Exp $
+ # $LynxId: lynx.cfg,v 1.252 2015/01/25 16:05:46 tom Exp $
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
 -#                                     or Lynx_Dir:lynx.cfg (VMS)
 +#
-+# Please don't edit this file directly (it is updated with every Mandriva
-+# Linux update, overwriting your changes). Instead, edit /etc/lynx-site.cfg.
++# Please don't edit this file directly (it is updated with every OpenMandriva
++# Lx update, overwriting your changes). Instead, edit /etc/lynx-site.cfg.
  #
  # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
- #PRCS LYNX_VERSION "2.8.7rel.1"
-@@ -93,7 +94,7 @@
+ #PRCS LYNX_VERSION "2.8.9dev.4"
+@@ -90,7 +91,7 @@
  #
  # Normally we expect you will connect to a remote site, e.g., the Lynx starting
  # site:
@@ -20,57 +20,63 @@
  #
  # As an alternative, you may want to use a local URL.  A good choice for this is
  # the user's home directory:
-@@ -118,9 +119,9 @@
+@@ -114,9 +115,9 @@ STARTFILE:http://lynx.isc.org/
  # This definition will be overridden if the "LYNX_HELPFILE" environment
  # variable has been set.
  #
--HELPFILE:http://lynx.isc.org/release/lynx2-8-6/lynx_help/lynx_help_main.html
-+#HELPFILE:http://lynx.isc.org/release/lynx2-8-6/lynx_help/lynx_help_main.html
+-HELPFILE:http://lynx.isc.org/release/breakout/lynx_help/lynx_help_main.html
  .ex
 -#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
-+HELPFILE:file://localhost//usr/share/lynx_help/lynx_help_main.html
- 
++#HELPFILE:http://lynx.isc.org/release/breakout/lynx_help/lynx_help_main.html
++HELPFILE:file://localhost/usr/share/lynx_help/lynx_help_main.html
  
  .h2 DEFAULT_INDEX_FILE
-@@ -553,7 +554,7 @@
+ # DEFAULT_INDEX_FILE is the default file retrieved when the
+@@ -560,7 +561,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
  # Older browser versions will fail so keep NCR_IN_BOOKMARKS:FALSE if you
  # plan to use them.
  #
 -#NCR_IN_BOOKMARKS:FALSE
 +NCR_IN_BOOKMARKS:TRUE
  
- 
  .h2 FORCE_8BIT_TOUPPER
-@@ -2314,7 +2315,7 @@
- # Make this empty (but not commented out) if you don't have such a viewer or
- # want to disable the built-in default viewer mappings for image types.
+ # FORCE_8BIT_TOUPPER overrides locale settings and uses internal 8-bit
+@@ -2279,7 +2280,7 @@ MINIMAL_COMMENTS:TRUE
+ # XLOADIMAGE_COMMAND definition.
+ # If you use xli, you may want to add the -quiet flag.
  #
--#XLOADIMAGE_COMMAND:xv %s
-+XLOADIMAGE_COMMAND:xli %s
+-#XLOADIMAGE_COMMAND:xli %s &
++XLOADIMAGE_COMMAND:display %s &
  
- # Unix:
- # =====
-@@ -2381,11 +2382,11 @@
+ .h2 VIEWER
+ # MIME types may be assigned to external viewers using
+@@ -2324,13 +2325,15 @@ MINIMAL_COMMENTS:TRUE
+ # by entries in those files.
  #
  .ex 7
- #VIEWER:application/postscript:ghostview %s&:XWINDOWS
+-#VIEWER:application/postscript:ghostview %s&:XWINDOWS
 -#VIEWER:image/gif:xli %s&:XWINDOWS
 -#VIEWER:image/x-xbm:xli %s&:XWINDOWS
 -#VIEWER:image/png:xli %s&:XWINDOWS
 -#VIEWER:image/tiff:xli %s&:XWINDOWS
 -#VIEWER:image/jpeg:xli %s&:XWINDOWS
-+VIEWER:image/gif:xli %s&:XWINDOWS
-+VIEWER:image/x-xbm:xli %s&:XWINDOWS
-+VIEWER:image/png:xli %s&:XWINDOWS
-+VIEWER:image/tiff:xli %s&:XWINDOWS
-+VIEWER:image/jpeg:xli %s&:XWINDOWS
- #VIEWER:video/mpeg:mpeg_play %s &:XWINDOWS
+-#VIEWER:video/mpeg:mpeg_play %s &:XWINDOWS
++VIEWER:application/postscript:okular %s&:XWINDOWS
++VIEWER:application/pdf:okular %s&:XWINDOWS
++VIEWER:image/gif:display %s&:XWINDOWS
++VIEWER:image/x-xbm:display %s&:XWINDOWS
++VIEWER:image/png:display %s&:XWINDOWS
++VIEWER:image/tiff:display %s&:XWINDOWS
++VIEWER:image/jpeg:display %s&:XWINDOWS
++VIEWER:video/mpeg:mpv %s &:XWINDOWS
++VIEWER:text/plain:less %s &
  
- 
-@@ -3587,3 +3588,6 @@
- #
- # The default size (if not overridden in userdefs.h) is 40.
- #STATUS_BUFFER_SIZE:40
+ .h2 GLOBAL_MAILCAP
+ .h2 PERSONAL_MAILCAP
+@@ -3744,3 +3747,6 @@ COLOR:6:brightred:black
+ .h2 WITH_BACKSPACES
+ # Emit backspaces in output if -dump'ing or -crawl'ing (like 'man' does).
+ #WITH_BACKSPACES:FALSE
 +
-+# included last to allow overriding configuration above
++# included last to allow overriding all of the configuration above
 +INCLUDE:/etc/lynx-site.cfg
