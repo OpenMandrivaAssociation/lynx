@@ -2,8 +2,8 @@
 
 Summary:	Text based browser for the world wide web
 Name:		lynx
-Version:	2.8.9dev.4
-Release:	2
+Version:	2.8.9dev.8
+Release:	1
 License:	GPLv2
 Group:		Networking/WWW
 Url:		http://lynx.isc.org
@@ -17,7 +17,7 @@ BuildRequires:	gettext
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	pkgconfig(zlib)
-Provides:	webclient 
+Provides:	webclient
 Provides:	lynx-ssl
 
 %description
