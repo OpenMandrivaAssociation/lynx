@@ -31,7 +31,7 @@ WARNING: In some countries, it is illegal to export this package. In some
 countries, it may even be illegal to use it.
 
 %prep
-%setup  -qn %{name}%{versio_}
+%setup  -qn %{name}%{version}
 %apply_patches
 sed -i -e 's,^#LOCALE_CHARSET:.*,LOCALE_CHARSET:TRUE,' lynx.cfg
 
