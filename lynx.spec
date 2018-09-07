@@ -10,7 +10,7 @@ Url:		http://lynx.isc.org
 Source0:	https://invisible-mirror.net/archives/lynx/tarballs/%{name}%{version}.tar.bz2
 #Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
 Patch0:		lynx2-8-7-adapt-to-modern-file-localizations.patch
-Patch1:		lynx2-8-7-default-config.patch
+#Patch1:		lynx2-8-7-default-config.patch
 Patch2:		lynx2-8-6-fix-ugly-color.patch
 Patch10:	lynx2-8-7-tmp_dir.patch
 Patch11:	lynx2-8-6-don-t-accept-command-line-args-to-telnet.patch
