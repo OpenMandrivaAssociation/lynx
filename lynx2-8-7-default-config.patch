@@ -1,38 +1,37 @@
---- lynx2-8-9/lynx.cfg.0001~	2015-04-06 17:48:56.613183364 +0200
-+++ lynx2-8-9/lynx.cfg	2015-04-06 18:01:15.703156083 +0200
-@@ -1,7 +1,8 @@
- # $LynxId: lynx.cfg,v 1.252 2015/01/25 16:05:46 tom Exp $
+--- lynx2.8.9dev.17/lynx.cfg.orig	2018-03-21 18:20:42.000000000 +0200
++++ lynx2.8.9dev.17/lynx.cfg	2018-03-22 09:32:09.456281184 +0200
+@@ -1,7 +1,7 @@
+ # $LynxId: lynx.cfg,v 1.294 2018/03/21 16:20:42 tom Exp $
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
 -#                                     or Lynx_Dir:lynx.cfg (VMS)
-+#
-+# Please don't edit this file directly (it is updated with every OpenMandriva
-+# Lx update, overwriting your changes). Instead, edit /etc/lynx-site.cfg.
++# Please don't edit this file directly (it is updated with every package
++# update, overwriting your changes). Instead, edit /etc/lynx-site.cfg.
  #
  # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
- #PRCS LYNX_VERSION "2.8.9dev.4"
-@@ -90,7 +91,7 @@
+ #PRCS LYNX_VERSION "2.8.9dev.17"
+@@ -108,7 +108,7 @@
  #
  # Normally we expect you will connect to a remote site, e.g., the Lynx starting
  # site:
--STARTFILE:http://lynx.isc.org/
-+STARTFILE:http://www.openmandriva.org
+-STARTFILE:http://lynx.invisible-island.net/
++STARTFILE:http://www.mageia.org/
  #
  # As an alternative, you may want to use a local URL.  A good choice for this is
  # the user's home directory:
-@@ -114,9 +115,9 @@ STARTFILE:http://lynx.isc.org/
+@@ -132,9 +132,9 @@
  # This definition will be overridden if the "LYNX_HELPFILE" environment
  # variable has been set.
  #
--HELPFILE:http://lynx.isc.org/release/breakout/lynx_help/lynx_help_main.html
+-HELPFILE:http://lynx.invisible-island.net/lynx_help/lynx_help_main.html
++#HELPFILE:http://lynx.invisible-island.net/lynx_help/lynx_help_main.html
  .ex
 -#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
-+#HELPFILE:http://lynx.isc.org/release/breakout/lynx_help/lynx_help_main.html
-+HELPFILE:file://localhost/usr/share/lynx_help/lynx_help_main.html
++HELPFILE:file://localhost//usr/share/lynx_help/lynx_help_main.html
  
  .h2 DEFAULT_INDEX_FILE
  # DEFAULT_INDEX_FILE is the default file retrieved when the
-@@ -560,7 +561,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
+@@ -578,7 +578,7 @@
  # Older browser versions will fail so keep NCR_IN_BOOKMARKS:FALSE if you
  # plan to use them.
  #
@@ -41,42 +40,36 @@
  
  .h2 FORCE_8BIT_TOUPPER
  # FORCE_8BIT_TOUPPER overrides locale settings and uses internal 8-bit
-@@ -2279,7 +2280,7 @@ MINIMAL_COMMENTS:TRUE
- # XLOADIMAGE_COMMAND definition.
- # If you use xli, you may want to add the -quiet flag.
+@@ -2278,7 +2278,7 @@
+ # Make this empty (but not commented out) if you don't have such a viewer or
+ # want to disable the built-in default viewer mappings for image types.
  #
--#XLOADIMAGE_COMMAND:xli %s &
-+XLOADIMAGE_COMMAND:display %s &
- 
- .h2 VIEWER
- # MIME types may be assigned to external viewers using
-@@ -2324,13 +2325,15 @@ MINIMAL_COMMENTS:TRUE
- # by entries in those files.
+-#XLOADIMAGE_COMMAND:xv %s
++XLOADIMAGE_COMMAND:xli %s
+ #
+ # Unix:
+ # =====
+@@ -2345,11 +2345,11 @@
  #
  .ex 7
--#VIEWER:application/postscript:ghostview %s&:XWINDOWS
+ #VIEWER:application/postscript:ghostview %s&:XWINDOWS
 -#VIEWER:image/gif:xli %s&:XWINDOWS
 -#VIEWER:image/x-xbm:xli %s&:XWINDOWS
 -#VIEWER:image/png:xli %s&:XWINDOWS
 -#VIEWER:image/tiff:xli %s&:XWINDOWS
 -#VIEWER:image/jpeg:xli %s&:XWINDOWS
--#VIEWER:video/mpeg:mpeg_play %s &:XWINDOWS
-+VIEWER:application/postscript:okular %s&:XWINDOWS
-+VIEWER:application/pdf:okular %s&:XWINDOWS
-+VIEWER:image/gif:display %s&:XWINDOWS
-+VIEWER:image/x-xbm:display %s&:XWINDOWS
-+VIEWER:image/png:display %s&:XWINDOWS
-+VIEWER:image/tiff:display %s&:XWINDOWS
-+VIEWER:image/jpeg:display %s&:XWINDOWS
-+VIEWER:video/mpeg:mpv %s &:XWINDOWS
-+VIEWER:text/plain:less %s &
++VIEWER:image/gif:xli %s&:XWINDOWS
++VIEWER:image/x-xbm:xli %s&:XWINDOWS
++VIEWER:image/png:xli %s&:XWINDOWS
++VIEWER:image/tiff:xli %s&:XWINDOWS
++VIEWER:image/jpeg:xli %s&:XWINDOWS
+ #VIEWER:video/mpeg:mpeg_play %s &:XWINDOWS
  
  .h2 GLOBAL_MAILCAP
- .h2 PERSONAL_MAILCAP
-@@ -3744,3 +3747,6 @@ COLOR:6:brightred:black
- .h2 WITH_BACKSPACES
- # Emit backspaces in output if -dump'ing or -crawl'ing (like 'man' does).
- #WITH_BACKSPACES:FALSE
+@@ -3797,3 +3797,6 @@
+ # several other features of HTTP/1.1.  You may encounter a server which does
+ # not support HTTP/1.0 which can be used by switching to the later protocol.
+ #HTTP_PROTOCOL:1.0
 +
-+# included last to allow overriding all of the configuration above
++# included last to allow overriding configuration above
 +INCLUDE:/etc/lynx-site.cfg
