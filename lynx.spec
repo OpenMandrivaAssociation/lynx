@@ -2,12 +2,12 @@
 
 Summary:	Text based browser for the world wide web
 Name:		lynx
-Version:	2.8.9dev.8
+Version:	2.8.9rel.1
 Release:	1
 License:	GPLv2
 Group:		Networking/WWW
-Url:		http://lynx.isc.org
-Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
+Url:		http://lynx.invisible-island.net/
+Source0:	https://invisible-mirror.net/archives/lynx/tarballs/lynx%{version}.tar.bz2
 Patch0:		lynx2-8-7-adapt-to-modern-file-localizations.patch
 Patch1:		lynx2-8-7-default-config.patch
 Patch2:		lynx2-8-6-fix-ugly-color.patch

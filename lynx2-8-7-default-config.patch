@@ -1,38 +1,36 @@
---- lynx2-8-9/lynx.cfg.0001~	2015-04-06 17:48:56.613183364 +0200
-+++ lynx2-8-9/lynx.cfg	2015-04-06 18:01:15.703156083 +0200
-@@ -1,7 +1,8 @@
- # $LynxId: lynx.cfg,v 1.252 2015/01/25 16:05:46 tom Exp $
+diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
+--- lynx2.8.9rel.1/lynx.cfg.0001~	2018-09-16 08:46:14.837118447 +0200
++++ lynx2.8.9rel.1/lynx.cfg	2018-09-16 08:52:20.875224608 +0200
+@@ -1,7 +1,7 @@
+ # $LynxId: lynx.cfg,v 1.302 2018/07/08 15:22:44 tom Exp $
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
 -#                                     or Lynx_Dir:lynx.cfg (VMS)
-+#
 +# Please don't edit this file directly (it is updated with every OpenMandriva
 +# Lx update, overwriting your changes). Instead, edit /etc/lynx-site.cfg.
  #
  # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
- #PRCS LYNX_VERSION "2.8.9dev.4"
-@@ -90,7 +91,7 @@
+ #PRCS LYNX_VERSION "2.8.9rel.1"
+@@ -108,7 +108,7 @@
  #
  # Normally we expect you will connect to a remote site, e.g., the Lynx starting
  # site:
--STARTFILE:http://lynx.isc.org/
-+STARTFILE:http://www.openmandriva.org
+-STARTFILE:https://lynx.invisible-island.net/
++STARTFILE:https://openmandriva.org/
  #
  # As an alternative, you may want to use a local URL.  A good choice for this is
  # the user's home directory:
-@@ -114,9 +115,9 @@ STARTFILE:http://lynx.isc.org/
+@@ -132,7 +132,8 @@ STARTFILE:https://lynx.invisible-island.
  # This definition will be overridden if the "LYNX_HELPFILE" environment
  # variable has been set.
  #
--HELPFILE:http://lynx.isc.org/release/breakout/lynx_help/lynx_help_main.html
- .ex
--#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
-+#HELPFILE:http://lynx.isc.org/release/breakout/lynx_help/lynx_help_main.html
+-HELPFILE:https://lynx.invisible-island.net/lynx_help/lynx_help_main.html
++#HELPFILE:https://lynx.invisible-island.net/lynx_help/lynx_help_main.html
 +HELPFILE:file://localhost/usr/share/lynx_help/lynx_help_main.html
+ .ex
+ #HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
  
- .h2 DEFAULT_INDEX_FILE
- # DEFAULT_INDEX_FILE is the default file retrieved when the
-@@ -560,7 +561,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
+@@ -578,7 +579,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
  # Older browser versions will fail so keep NCR_IN_BOOKMARKS:FALSE if you
  # plan to use them.
  #
@@ -41,7 +39,26 @@
  
  .h2 FORCE_8BIT_TOUPPER
  # FORCE_8BIT_TOUPPER overrides locale settings and uses internal 8-bit
-@@ -2279,7 +2280,7 @@ MINIMAL_COMMENTS:TRUE
+@@ -1803,6 +1804,8 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
+ #
+ # Printer examples:
+ .ex 3
++PRINTER:Print to default printer:lp %s:TRUE
++PRINTER:View with less:less %s:TRUE
+ #PRINTER:Computer Center printer:lpr -Pccprt %s:FALSE
+ #PRINTER:Office printer:lpr -POffprt %s:TRUE
+ #PRINTER:VMS printer:print /queue=cc$print %s:FALSE:58
+@@ -1846,6 +1849,9 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
+ # The following is strongly recommended to undo ASCII->EBCDIC conversion.
+ .ex
+ #DOWNLOADER:Save OS/390 binary file: iconv -f IBM-1047 -t ISO8859-1 %s >%s:FALSE
++DOWNLOADER:View with less:less %s:TRUE
++DOWNLOADER:View with zless:zless %s:TRUE
++DOWNLOADER:View with xzless:xzless %s:TRUE
+ 
+ .h1 Interaction
+ 
+@@ -2299,7 +2305,7 @@ MINIMAL_COMMENTS:TRUE
  # XLOADIMAGE_COMMAND definition.
  # If you use xli, you may want to add the -quiet flag.
  #
@@ -50,7 +67,7 @@
  
  .h2 VIEWER
  # MIME types may be assigned to external viewers using
-@@ -2324,13 +2325,15 @@ MINIMAL_COMMENTS:TRUE
+@@ -2344,13 +2350,15 @@ MINIMAL_COMMENTS:TRUE
  # by entries in those files.
  #
  .ex 7
@@ -73,10 +90,10 @@
  
  .h2 GLOBAL_MAILCAP
  .h2 PERSONAL_MAILCAP
-@@ -3744,3 +3747,6 @@ COLOR:6:brightred:black
- .h2 WITH_BACKSPACES
- # Emit backspaces in output if -dump'ing or -crawl'ing (like 'man' does).
- #WITH_BACKSPACES:FALSE
-+
+@@ -3829,3 +3837,6 @@ COLOR:6:brightred:black
+ # The default value FALSE disables this guess, telling Lynx to just assume that
+ # "http:" was intended.
+ #GUESS_SCHEME:FALSE
++#
 +# included last to allow overriding all of the configuration above
 +INCLUDE:/etc/lynx-site.cfg
