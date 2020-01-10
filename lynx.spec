@@ -32,7 +32,7 @@ countries, it may even be illegal to use it.
 
 %prep
 %setup  -qn %{name}%{version}
-%apply_patches
+%autopatch -p1
 sed -i -e 's,^#LOCALE_CHARSET:.*,LOCALE_CHARSET:TRUE,' lynx.cfg
 
 %build
