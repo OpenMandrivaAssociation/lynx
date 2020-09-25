@@ -3,7 +3,7 @@
 Summary:	Text based browser for the world wide web
 Name:		lynx
 Version:	2.8.9rel.1
-Release:	2
+Release:	3
 License:	GPLv2
 Group:		Networking/WWW
 Url:		http://lynx.invisible-island.net/
@@ -31,8 +31,7 @@ WARNING: In some countries, it is illegal to export this package. In some
 countries, it may even be illegal to use it.
 
 %prep
-%setup  -qn %{name}%{version}
-%autopatch -p1
+%autosetup  -n %{name}%{version} -p1
 sed -i -e 's,^#LOCALE_CHARSET:.*,LOCALE_CHARSET:TRUE,' lynx.cfg
 
 %build
@@ -79,15 +78,16 @@ OTHER`
 # --enable-cjk not needed for CJK and may go away in a future release
 
 CFLAGS="$RPM_OPT_FLAGS -I/usr/include/openssl" \
-%configure2_5x \
+%configure \
 	--libdir=/usr/share/lynx \
 	$debian_options \
 	$redhat_options \
 	$other_options
-%make
+
+%make_build
 
 %install
-%makeinstall_std install-help
+%make_install install-help
 
 install -d %{buildroot}%{_sysconfdir}
 cat >%{buildroot}%{_sysconfdir}/lynx-site.cfg <<EOF
