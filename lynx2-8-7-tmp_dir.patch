@@ -1,14 +1,15 @@
---- lynx2-8-7/src/LYMain.c.orig	2009-07-06 01:52:33.000000000 +0200
-+++ lynx2-8-7/src/LYMain.c	2010-01-03 14:58:31.000000000 +0100
-@@ -967,6 +967,7 @@
+diff -up lynx2.9.1/src/LYMain.c.4~ lynx2.9.1/src/LYMain.c
+--- lynx2.9.1/src/LYMain.c.4~	2024-03-18 00:10:41.000000000 +0100
++++ lynx2.9.1/src/LYMain.c	2024-04-19 14:25:16.724626268 +0200
+@@ -1047,6 +1047,7 @@ int main(int argc,
      struct stat dir_info;
      char filename[LY_MAXPATH];
      BOOL LYGetStdinArgs = FALSE;
 +    struct stat st;
  
- #ifdef _WINDOWS
-     WSADATA WSAData;
-@@ -1209,6 +1210,21 @@
+ #if USE_GETPWUID
+     struct passwd *my_pwd;
+@@ -1305,6 +1306,21 @@ int main(int argc,
  #endif
  	LYTildeExpand(&lynx_temp_space, TRUE);
  
@@ -30,9 +31,10 @@
      if ((cp = strstr(lynx_temp_space, "$USER")) != NULL) {
  	char *cp1;
  
---- lynx2-8-7/userdefs.h.orig	2010-01-03 14:58:31.000000000 +0100
-+++ lynx2-8-7/userdefs.h	2010-01-03 14:58:31.000000000 +0100
-@@ -354,7 +354,7 @@
+diff -up lynx2.9.1/userdefs.h.4~ lynx2.9.1/userdefs.h
+--- lynx2.9.1/userdefs.h.4~	2024-04-19 14:21:31.934573257 +0200
++++ lynx2.9.1/userdefs.h	2024-04-19 14:21:32.002573874 +0200
+@@ -366,7 +366,7 @@
   * the "TMPDIR" (unix), or "TEMP" or "TMP" (Windows,DOS,OS/2)
   * variable.
   */

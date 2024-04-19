@@ -1,17 +1,17 @@
-diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
---- lynx2.8.9rel.1/lynx.cfg.0001~	2018-09-16 08:46:14.837118447 +0200
-+++ lynx2.8.9rel.1/lynx.cfg	2018-09-16 08:52:20.875224608 +0200
+diff -up lynx2.9.1/lynx.cfg.2~ lynx2.9.1/lynx.cfg
+--- lynx2.9.1/lynx.cfg.2~	2024-04-19 13:52:55.751646989 +0200
++++ lynx2.9.1/lynx.cfg	2024-04-19 14:20:59.434278656 +0200
 @@ -1,7 +1,7 @@
- # $LynxId: lynx.cfg,v 1.302 2018/07/08 15:22:44 tom Exp $
+ # $LynxId: lynx.cfg,v 1.350 2024/04/15 20:53:51 tom Exp $
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
 -#                                     or Lynx_Dir:lynx.cfg (VMS)
 +# Please don't edit this file directly (it is updated with every OpenMandriva
 +# Lx update, overwriting your changes). Instead, edit /etc/lynx-site.cfg.
  #
- # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
- #PRCS LYNX_VERSION "2.8.9rel.1"
-@@ -108,7 +108,7 @@
+ # LYNX_VERSION "2.9.1"
+ # LYNX_DATE    "15 Apr 2024"
+@@ -105,7 +105,7 @@
  #
  # Normally we expect you will connect to a remote site, e.g., the Lynx starting
  # site:
@@ -20,7 +20,7 @@ diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
  #
  # As an alternative, you may want to use a local URL.  A good choice for this is
  # the user's home directory:
-@@ -132,7 +132,8 @@ STARTFILE:https://lynx.invisible-island.
+@@ -129,7 +129,8 @@ STARTFILE:https://lynx.invisible-island.
  # This definition will be overridden if the "LYNX_HELPFILE" environment
  # variable has been set.
  #
@@ -30,7 +30,7 @@ diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
  .ex
  #HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
  
-@@ -578,7 +579,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
+@@ -575,7 +576,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
  # Older browser versions will fail so keep NCR_IN_BOOKMARKS:FALSE if you
  # plan to use them.
  #
@@ -39,7 +39,7 @@ diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
  
  .h2 FORCE_8BIT_TOUPPER
  # FORCE_8BIT_TOUPPER overrides locale settings and uses internal 8-bit
-@@ -1803,6 +1804,8 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
+@@ -1811,6 +1812,8 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
  #
  # Printer examples:
  .ex 3
@@ -48,7 +48,7 @@ diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
  #PRINTER:Computer Center printer:lpr -Pccprt %s:FALSE
  #PRINTER:Office printer:lpr -POffprt %s:TRUE
  #PRINTER:VMS printer:print /queue=cc$print %s:FALSE:58
-@@ -1846,6 +1849,9 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
+@@ -1854,6 +1857,9 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
  # The following is strongly recommended to undo ASCII->EBCDIC conversion.
  .ex
  #DOWNLOADER:Save OS/390 binary file: iconv -f IBM-1047 -t ISO8859-1 %s >%s:FALSE
@@ -58,7 +58,7 @@ diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
  
  .h1 Interaction
  
-@@ -2299,7 +2305,7 @@ MINIMAL_COMMENTS:TRUE
+@@ -2307,7 +2313,7 @@ MINIMAL_COMMENTS:TRUE
  # XLOADIMAGE_COMMAND definition.
  # If you use xli, you may want to add the -quiet flag.
  #
@@ -67,7 +67,7 @@ diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
  
  .h2 VIEWER
  # MIME types may be assigned to external viewers using
-@@ -2344,13 +2350,15 @@ MINIMAL_COMMENTS:TRUE
+@@ -2352,13 +2358,15 @@ MINIMAL_COMMENTS:TRUE
  # by entries in those files.
  #
  .ex 7
@@ -90,10 +90,9 @@ diff -up lynx2.8.9rel.1/lynx.cfg.0001~ lynx2.8.9rel.1/lynx.cfg
  
  .h2 GLOBAL_MAILCAP
  .h2 PERSONAL_MAILCAP
-@@ -3829,3 +3837,6 @@ COLOR:6:brightred:black
- # The default value FALSE disables this guess, telling Lynx to just assume that
- # "http:" was intended.
- #GUESS_SCHEME:FALSE
-+#
+@@ -3860,3 +3868,5 @@ COLOR:6:brightred:black
+ .h2 LIST_DECODED
+ # For -dump, show URL-encoded links decoded.
+ #LIST_DECODED:TRUE
 +# included last to allow overriding all of the configuration above
 +INCLUDE:/etc/lynx-site.cfg
