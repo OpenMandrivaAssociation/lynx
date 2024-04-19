@@ -17,6 +17,7 @@ BuildRequires:	gettext
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	locales-extra-charsets
 Provides:	webclient
 Provides:	lynx-ssl
 
