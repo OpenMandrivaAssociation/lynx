@@ -6,7 +6,7 @@ Version:	2.9.2
 Release:	1
 License:	GPLv2
 Group:		Networking/WWW
-Url:		http://lynx.invisible-island.net/
+Url:		https://lynx.invisible-island.net/
 Source0:	https://invisible-mirror.net/archives/lynx/tarballs/lynx%{version}.tar.bz2
 Patch0:		lynx2-8-7-adapt-to-modern-file-localizations.patch
 Patch1:		lynx2-8-7-default-config.patch
