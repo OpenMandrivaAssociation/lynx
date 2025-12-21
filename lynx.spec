@@ -13,6 +13,11 @@ Patch1:		lynx2-8-7-default-config.patch
 Patch2:		lynx2-8-6-fix-ugly-color.patch
 Patch10:	lynx2-8-7-tmp_dir.patch
 Patch11:	lynx2-8-6-don-t-accept-command-line-args-to-telnet.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gettext
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(ncursesw)
