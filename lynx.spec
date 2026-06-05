@@ -3,7 +3,7 @@
 Summary:	Text based browser for the world wide web
 Name:		lynx
 Version:	2.9.2
-Release:	1
+Release:	2
 License:	GPLv2
 Group:		Networking/WWW
 Url:		https://lynx.invisible-island.net/
