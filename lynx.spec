@@ -2,14 +2,14 @@
 
 Summary:	Text based browser for the world wide web
 Name:		lynx
-Version:	2.9.2
-Release:	2
+Version:	2.9.3
+Release:	1
 License:	GPLv2
 Group:		Networking/WWW
 Url:		https://lynx.invisible-island.net/
 Source0:	https://invisible-mirror.net/archives/lynx/tarballs/lynx%{version}.tar.bz2
-Patch0:		lynx2-8-7-adapt-to-modern-file-localizations.patch
-Patch1:		lynx2-8-7-default-config.patch
+# dropped (no longer applies): Patch0:		lynx2-8-7-adapt-to-modern-file-localizations.patch
+# dropped (no longer applies): Patch1:		lynx2-8-7-default-config.patch
 Patch2:		lynx2-8-6-fix-ugly-color.patch
 Patch10:	lynx2-8-7-tmp_dir.patch
 Patch11:	lynx2-8-6-don-t-accept-command-line-args-to-telnet.patch
@@ -37,7 +37,7 @@ WARNING: In some countries, it is illegal to export this package. In some
 countries, it may even be illegal to use it.
 
 %prep
-%autosetup  -n %{name}%{version} -p1
+%autosetup  -n lynx2.9.3 -p1
 sed -i -e 's,^#LOCALE_CHARSET:.*,LOCALE_CHARSET:TRUE,' lynx.cfg
 
 %build
